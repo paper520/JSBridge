@@ -43,6 +43,9 @@
     },
 
     // 原生调用，通过这个方法回调或调用H5方法
+    // messageJSON是一个json，不同的类型有不同的key，具体有下面二种：
+    // 类型一：回调（responseId,responseDate）
+    // 类型二：主动调用（handlerName,data,callbackId）
     "_handleMessageFromNative": function (messageJSON) {
 
     }
