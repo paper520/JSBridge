@@ -2,11 +2,18 @@
 
   "use strict";
 
-  // 回调函数集合
+  // 回调函数集合，原生调用了对应的api后会根据回调id调用回调函数
   var responseCallbacks = {};
 
   // 本地注册的方法集合
   var messageHandlers = {};
+
+  // 运行方法队列，每次调用原生api时，会触发一次scheme，
+  // 然后原生会通过_fetchQueue方法来获取运行方法队列
+  var sendMessageQueue = [];
+
+  // 这个flag控制原生调用本地方法是异步还是同步，默认true，异步
+  var dispatchMessagesWithTimeoutSafety = true;
 
   // 辅助变量(可以无视的部分)
   var uniqueId = 0;
@@ -42,13 +49,26 @@
 
     },
 
+
+
+    // 原生调用，通过这个方法获取当前调用的api状况
+    "_fetchQueue": function () {
+
+    },
+
+    // 原生调用，设置是否异步调用H5方法，默认为异步，调用这个方法后会变为同步
+    "disableJavascriptAlertBoxSafetyTimeout": function () {
+
+    },
+
     // 原生调用，通过这个方法回调或调用H5方法
     // messageJSON是一个json，不同的类型有不同的key，具体有下面二种：
     // 类型一：回调（responseId,responseDate）
     // 类型二：主动调用（handlerName,data,callbackId）
     "_handleMessageFromNative": function (messageJSON) {
 
-    }
+    },
+
   };
 
 })();
